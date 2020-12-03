@@ -20,17 +20,41 @@
         <img src="img/logo-white.png" alt="Natours logo" />
       </div>
       <nav class="nav nav--user">
-        <!-- <a href="#" class="nav__el">My bookings</a>
-        <a href="#" class="nav__el">
-          <img src="img/users/default.jpg" alt="User photo" class="nav__user-img" />
-          <span>Jonas</span>
-        </a> -->
+        <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn"
+          >My bookings</a
+        >
+        <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn">
+          <img
+            v-bind:src="'img/users/' + user.photo"
+            alt="User photo"
+            class="nav__user-img"
+          />
+          <span>{{ user.name }}</span>
+        </a>
+        <a
+          href="#"
+          class="nav__el"
+          v-if="$store.state.isUserLoggedIn"
+          @click="logout"
+          >Logout</a
+        >
 
-        <button @click="$router.push('login')" class="nav__el" >Log in</button>
-        <button class="nav__el nav__el--cta">Sign up</button>
+        <button
+          @click="$router.push('login')"
+          class="nav__el"
+          v-if="!$store.state.isUserLoggedIn"
+        >
+          Log in
+        </button>
+        <button
+          class="nav__el nav__el--cta"
+          v-if="!$store.state.isUserLoggedIn"
+        >
+          Sign up
+        </button>
       </nav>
     </header>
-    <router-view/>
+    <router-view />
     <footer class="footer">
       <div class="footer__logo">
         <img src="img/logo-green.png" alt="Natours logo" />
@@ -42,9 +66,7 @@
         <li><a href="#">Careers</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
-      <p class="footer__copyright">
-        &copy; by Nikita Skopin
-      </p>
+      <p class="footer__copyright">&copy; by Nikita Skopin</p>
     </footer>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -53,6 +75,30 @@
     <router-view/> -->
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(['user']),
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('setToken', null);
+      this.$store.dispatch('setUser', null);
+      if (this.$route.name !== 'Home') {
+        this.$router.push({
+          name: 'Home',
+        });
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 </style>

@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1>Login</h1>
-    <input type='email' name='email' v-model='email' placeholder='Email' />
-    <input type='password' name='password' v-model='password' placeholder='Password' />
-    <button type='button' v-on:click='login'>Login</button>
+    <input type="email" name="email" v-model="email" placeholder="Email" />
+    <input
+      type="password"
+      name="password"
+      v-model="password"
+      placeholder="Password"
+    />
+    <button type="button" v-on:click="login">Login</button>
   </div>
 </template>
 
@@ -26,22 +31,19 @@ export default {
           email: this.email,
           password: this.password,
         });
-        console.log(response);
-        // this.$store.dispatch('setToken', response.data.token);
-        // this.$store.dispatch('setUser', response.data.user);
-        // this.$router.push({
-        //   name: 'Home',
-        // });
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.data.user);
+        this.$router.push({
+          name: 'Home',
+        });
       } catch (error) {
         this.error = error.response.data.error;
       }
     },
   },
-  components: {
-  },
+  components: {},
 };
 </script>
 
 <style>
-
 </style>
