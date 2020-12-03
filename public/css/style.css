@@ -316,10 +316,12 @@ body {
 }
 @media only screen and (max-width: 62.5em) {
   .header {
+    height: auto;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    padding: 2rem 5rem;
   }
 }
 .header__logo img {
@@ -878,11 +880,13 @@ body {
 @media only screen and (max-width: 62.5em) {
   .nav--tours {
     margin-bottom: 1.5rem;
+    flex-direction: column;
   }
 }
 @media only screen and (max-width: 37.5em) {
   .nav--tours {
     margin-bottom: 0;
+    flex-direction: column;
   }
 }
 .nav--user {
@@ -960,6 +964,9 @@ body {
     order: -1;
     margin-bottom: 1.2rem;
   }
+  /* .nav__search-input::placeholder {
+    text-align: center;
+  } */
 }
 .nav__search-btn {
   background: none;
@@ -1071,10 +1078,9 @@ body {
 
 .card-container {
   max-width: 120rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 7rem;
+  list-style-type: none;
+  /* margin: 0 auto; */
+  /* grid-column-gap: 1px; */
 }
 
 .card {
@@ -1094,6 +1100,8 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: 100%;
+  max-width: 370px;
 }
 .card__header {
   position: relative;
