@@ -1,14 +1,40 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <input type="email" name="email" v-model="email" placeholder="Email" />
-    <input
-      type="password"
-      name="password"
-      v-model="password"
-      placeholder="Password"
-    />
-    <button type="button" v-on:click="login">Login</button>
+  <div class="main">
+    <div class="login-form">
+      <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
+      <form class="form form--login">
+        <div class="form__group">
+          <label class="form__label" for="email">Email address</label
+          ><input
+            class="form__input"
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            name="email"
+            v-model="email"
+          />
+        </div>
+        <div class="form__group ma-bt-md">
+          <label class="form__label" for="password">Password</label
+          ><input
+            class="form__input"
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required
+            minlength="8"
+            name="password"
+            v-model="password"
+          />
+        </div>
+        <div class="form__group">
+          <button class="btn btn--green" type="button" v-on:click="login">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 

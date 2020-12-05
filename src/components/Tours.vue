@@ -26,7 +26,6 @@ export default {
       this.error = null;
       try {
         this.toursList = (await TourService.index()).data.data;
-        console.log(this.toursList);
       } catch (error) {
         this.error = error.response.data.error;
       }

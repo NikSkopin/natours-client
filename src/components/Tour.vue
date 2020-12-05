@@ -69,7 +69,13 @@
             {{ 'rating (' + tour.ratingsQuantity + ')' }}</span
           >
         </p>
-        <a href="#" class="btn btn--green btn--small">Details</a>
+        <!-- <a href="#" class="btn btn--green btn--small">Details</a> -->
+        <button
+          @click="$router.push('details')"
+          class="btn btn--green btn--small"
+        >
+          Details
+        </button>
       </div>
     </template>
   </Card>
