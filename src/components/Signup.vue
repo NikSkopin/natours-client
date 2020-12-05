@@ -11,6 +11,7 @@
             type="text"
             placeholder=""
             required
+            v-model="name"
           />
         </div>
         <div class="form__group">
@@ -21,6 +22,7 @@
             type="email"
             placeholder="you@example.com"
             required
+            v-model="email"
           />
         </div>
         <div class="form__group ma-bt-md">
@@ -32,6 +34,7 @@
             placeholder="••••••••"
             required
             minlength="8"
+            v-model="password"
           />
         </div>
         <div class="form__group ma-bt-md">
@@ -44,10 +47,16 @@
             placeholder="••••••••"
             required
             minlength="8"
+            v-model="passwordConfirm"
           />
         </div>
+        <Message severity="error" :closable="false" v-if="error">{{
+          error.message
+        }}</Message>
         <div class="form__group">
-          <button class="btn btn--green">Sign up</button>
+          <button class="btn btn--green" type="button" v-on:click="signup">
+            Sign up
+          </button>
         </div>
       </form>
     </div>
@@ -55,7 +64,43 @@
 </template>
 
 <script>
-export default {};
+import Message from 'primevue/message';
+import AuthService from '@/services/AuthService';
+
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      error: null,
+    };
+  },
+  methods: {
+    async signup() {
+      this.error = null;
+      try {
+        const response = await AuthService.signup({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          passwordConfirm: this.passwordConfirm,
+        });
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.data.user);
+        this.$router.push({
+          name: 'Home',
+        });
+      } catch (error) {
+        this.error = error.response.data;
+      }
+    },
+  },
+  components: {
+    Message,
+  },
+};
 </script>
 
 <style>

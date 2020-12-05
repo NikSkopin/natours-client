@@ -1331,3 +1331,11 @@ body {
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
 }
+
+.p-message {
+  margin: 2rem 0;
+}
+
+.p-message .p-message-text {
+  font-size: 1.5rem;
+}

@@ -28,6 +28,9 @@
             v-model="password"
           />
         </div>
+        <Message severity="error" :closable="false" v-if="error">{{
+          error.message
+        }}</Message>
         <div class="form__group">
           <button class="btn btn--green" type="button" v-on:click="login">
             Login
@@ -40,6 +43,8 @@
 
 <script>
 import AuthService from '@/services/AuthService';
+// import InlineMessage from 'primevue/inlinemessage';
+import Message from 'primevue/message';
 
 export default {
   data() {
@@ -63,11 +68,14 @@ export default {
           name: 'Home',
         });
       } catch (error) {
-        this.error = error.response.data.error;
+        this.error = error.response.data;
       }
     },
   },
-  components: {},
+  components: {
+    // InlineMessage,
+    Message,
+  },
 };
 </script>
 

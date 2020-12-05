@@ -47,6 +47,7 @@
           Log in
         </button>
         <button
+          @click="$router.push('signup')"
           class="nav__el nav__el--cta"
           v-if="!$store.state.isUserLoggedIn"
         >
