@@ -70,12 +70,21 @@
           >
         </p>
         <!-- <a href="#" class="btn btn--green btn--small">Details</a> -->
-        <button
+        <!-- <button
           @click="$router.push('details')"
           class="btn btn--green btn--small"
         >
           Details
-        </button>
+        </button> -->
+        <router-link
+          :to="{
+            name: 'Details',
+            params: { tourName: tourName, tourId: tour._id },
+          }"
+          tag="button"
+          class="btn btn--green btn--small"
+          >Details
+        </router-link>
       </div>
     </template>
   </Card>
@@ -117,6 +126,9 @@ export default {
       const year = startDate.getFullYear();
       const dateString = `${month} ${year}`;
       return dateString;
+    },
+    tourName() {
+      return this.tour.name.replaceAll(' ', '-').toLowerCase();
     },
   },
   components: {

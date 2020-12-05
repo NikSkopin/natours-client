@@ -25,7 +25,14 @@
         >
         <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn">
           <img
+            v-if="user.photo"
             v-bind:src="'img/users/' + user.photo"
+            alt="User photo"
+            class="nav__user-img"
+          />
+          <img
+            v-else
+            v-bind:src="'img/users/default.jpg'"
             alt="User photo"
             class="nav__user-img"
           />

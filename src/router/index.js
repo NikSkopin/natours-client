@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Login from '@/components/Login.vue';
 import Signup from '@/components/Signup.vue';
 import Tours from '@/components/Tours.vue';
+import Details from '@/components/Details.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,12 @@ const routes = [
     path: '/tours',
     name: 'Tours',
     component: Tours,
+  },
+  {
+    path: '/tours/:tourName',
+    name: 'Details',
+    component: Details,
+    props: true,
   },
 ];
 const router = new VueRouter({
