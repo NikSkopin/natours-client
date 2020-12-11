@@ -9,8 +9,8 @@
         <div class="card__picture">
           <div class="card__picture-overlay">&nbsp;</div>
           <img
-            v-bind:src="'img/tours/' + tour.imageCover"
-            alt="Tour 1"
+            :src="'img/tours/' + tour.imageCover"
+            :alt="tour.name"
             class="card__picture-img"
           />
         </div>
@@ -37,7 +37,7 @@
           <svg class="card__icon">
             <use xlink:href="img/icons.svg#icon-calendar"></use>
           </svg>
-          <span>{{ closestStartDate }}</span>
+          <span>{{ dateString }}</span>
         </div>
         <div class="card__data">
           <svg class="card__icon">
@@ -79,7 +79,7 @@
         <router-link
           :to="{
             name: 'Details',
-            params: { tourName: tourName, tourId: tour._id },
+            params: { tourName: tourName, tour: tour, dateString: dateString },
           }"
           tag="button"
           class="btn btn--green btn--small"
@@ -96,37 +96,38 @@ import Card from 'primevue/card';
 
 export default {
   data() {
-    return {};
+    return {
+      dateString: '',
+    };
   },
   props: ['tour'],
+  created() {
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const today = new Date();
+    const startDate = this.tour.startDates.reduce((a, b) => {
+      const aDate = new Date(a);
+      const bDate = new Date(b);
+      const adiff = aDate - today;
+      return adiff > 0 && adiff < bDate - today ? aDate : bDate;
+    });
+    const month = monthNames[startDate.getMonth()];
+    const year = startDate.getFullYear();
+    this.dateString = `${month} ${year}`;
+  },
   computed: {
-    closestStartDate() {
-      const monthNames = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ];
-      const today = new Date();
-      const startDate = this.tour.startDates.reduce((a, b) => {
-        const aDate = new Date(a);
-        const bDate = new Date(b);
-        const adiff = aDate - today;
-        return adiff > 0 && adiff < bDate - today ? aDate : bDate;
-      });
-      const month = monthNames[startDate.getMonth()];
-      const year = startDate.getFullYear();
-      const dateString = `${month} ${year}`;
-      return dateString;
-    },
     tourName() {
       return this.tour.name.replaceAll(' ', '-').toLowerCase();
     },
