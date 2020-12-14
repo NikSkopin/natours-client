@@ -79,7 +79,11 @@
         <router-link
           :to="{
             name: 'Details',
-            params: { tourName: tourName, tour: tour, dateString: dateString },
+            params: {
+              tourName: tourName,
+              tourId: tour._id,
+              dateString: dateString,
+            },
           }"
           tag="button"
           class="btn btn--green btn--small"

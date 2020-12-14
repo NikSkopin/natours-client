@@ -30,7 +30,7 @@
         </div>
       </div>
     </section>
-    <section class="section-description">
+    <section class="section-description p-d-flex p-flex-column p-flex-md-row">
       <div class="overview-box">
         <div>
           <div class="overview-box__group">
@@ -93,7 +93,7 @@
         </p>
       </div>
     </section>
-    <section class="section-pictures">
+    <section class="section-pictures p-d-flex p-flex-column p-flex-md-row">
       <div
         class="picture-box"
         v-for="(pic, index) in tour.images"
@@ -109,172 +109,19 @@
     <section class="section-map">
       <Map :tour="tour" />
     </section>
-    <section class="section-reviews">
-      <div class="reviews">
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-2.jpg"
-              alt="Lourdes Browning"
-            />
-            <h6 class="reviews__user">Lourdes Browning</h6>
-          </div>
-          <p class="reviews__text">
-            Cras mollis nisi parturient mi nec aliquet suspendisse sagittis eros
-            condimentum scelerisque taciti mattis praesent feugiat eu nascetur a
-            tincidunt
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-3.jpg"
-              alt="Sophie Louise Hart"
-            />
-            <h6 class="reviews__user">Sophie Louise Hart</h6>
-          </div>
-          <p class="reviews__text">
-            Pulvinar taciti etiam aenean lacinia natoque interdum fringilla
-            suspendisse nam sapien urna!
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--inactive">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-9.jpg"
-              alt="Cristian Vega"
-            />
-            <h6 class="reviews__user">Cristian Vega</h6>
-          </div>
-          <p class="reviews__text">
-            Sem feugiat sed lorem vel dignissim platea habitasse dolor suscipit
-            ultricies dapibus
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-14.jpg"
-              alt="Laura Sarah Wilson"
-            />
-            <h6 class="reviews__user">Laura Sarah Wilson</h6>
-          </div>
-          <p class="reviews__text">
-            Blandit varius nascetur est felis praesent lorem himenaeos pretium
-            dapibus tellus bibendum consequat ac duis
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-15.jpg"
-              alt="Max Smith"
-            />
-            <h6 class="reviews__user">Max Smith</h6>
-          </div>
-          <p class="reviews__text">
-            Tempor pellentesque eu placerat auctor enim nam suscipit tincidunt
-            natoque ipsum est.
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-        <div class="reviews__card">
-          <div class="reviews__avatar">
-            <img
-              class="reviews__avatar-img"
-              src="/img/users/user-19.jpg"
-              alt="John Riley"
-            />
-            <h6 class="reviews__user">John Riley</h6>
-          </div>
-          <p class="reviews__text">
-            Magna magnis tellus dui vivamus donec placerat vehicula erat turpis
-          </p>
-          <div class="reviews__rating">
-            <svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use></svg
-            ><svg class="reviews__star reviews__star--active">
-              <use xlink:href="/img/icons.svg#icon-star"></use>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Carousel
+      :value="tour.reviews"
+      :numVisible="3"
+      :numScroll="3"
+      :circular="true"
+      :responsiveOptions="responsiveOptions"
+      class="section-reviews"
+    >
+      <template #item="slotProps">
+        <Review :review="slotProps.data" />
+      </template>
+    </Carousel>
+
     <section class="section-cta">
       <div class="cta">
         <div class="cta__img cta__img--logo">
@@ -309,11 +156,52 @@
 
 <script>
 import Map from '@/components/Map.vue';
+import Carousel from 'primevue/carousel';
+import Review from '@/components/Review.vue';
+import TourService from '@/services/TourService';
 
 export default {
-  props: ['tourName', 'tour', 'dateString'],
+  data() {
+    return {
+      error: null,
+      tour: null,
+      responsiveOptions: [
+        {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3,
+        },
+        {
+          breakpoint: '600px',
+          numVisible: 2,
+          numScroll: 2,
+        },
+        {
+          breakpoint: '480px',
+          numVisible: 1,
+          numScroll: 1,
+        },
+      ],
+    };
+  },
+  props: ['tourName', 'tourId', 'dateString'],
+  created() {
+    this.getTour();
+  },
+  methods: {
+    async getTour() {
+      this.error = null;
 
-  components: { Map },
+      try {
+        this.tour = (await TourService.getTour(this.tourId)).data.data.data;
+        console.log(this.tour.imageCover);
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
+    },
+  },
+
+  components: { Map, Review, Carousel },
 };
 </script>
 
