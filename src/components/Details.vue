@@ -1,12 +1,12 @@
 <template>
   <!-- TODO add responsive -->
-  <div>
+  <div v-if="dataFetched">
     <section class="section-header">
       <div class="header__hero">
         <div class="header__hero-overlay">&nbsp;</div>
         <img
           class="header__hero-img"
-          :src="'img/tours/' + tour.imageCover"
+          :src="'/img/tours/' + tour.imageCover"
           :alt="tour.name"
         />
       </div>
@@ -139,8 +139,10 @@
         <div class="cta__content">
           <h2 class="heading-secondary">What are you waiting for?</h2>
           <p class="cta__text">
-            7 days. 1 adventure. Infinite memories. Make it yours today!
+            {{ tour.duration }} days. 1 adventure. Infinite memories. Make it
+            yours today!
           </p>
+          <!-- TODO doesn't work yet -->
           <button
             class="btn btn--green span-all-rows"
             id="book-tour"
@@ -163,6 +165,7 @@ import TourService from '@/services/TourService';
 export default {
   data() {
     return {
+      dataFetched: false,
       error: null,
       tour: null,
       responsiveOptions: [
@@ -185,8 +188,10 @@ export default {
     };
   },
   props: ['tourName', 'tourId', 'dateString'],
-  created() {
+
+  mounted() {
     this.getTour();
+    // TODO wait for response, then render
   },
   methods: {
     async getTour() {
@@ -195,6 +200,7 @@ export default {
       try {
         this.tour = (await TourService.getTour(this.tourId)).data.data.data;
         console.log(this.tour.imageCover);
+        this.dataFetched = true;
       } catch (error) {
         this.error = error.response.data.error;
       }

@@ -5,6 +5,7 @@ import Login from '@/components/Login.vue';
 import Signup from '@/components/Signup.vue';
 import Tours from '@/components/Tours.vue';
 import Details from '@/components/Details.vue';
+import PathNotFound from '@/components/PathNotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,7 @@ const routes = [
     component: Details,
     props: true,
   },
+  { path: '*', component: PathNotFound },
 ];
 const router = new VueRouter({
   mode: 'history',

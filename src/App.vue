@@ -6,7 +6,7 @@
         <form class="nav__search">
           <button class="nav__search-btn">
             <svg>
-              <use xlink:href="img/icons.svg#icon-search"></use>
+              <use xlink:href="/img/icons.svg#icon-search"></use>
             </svg>
           </button>
           <input
@@ -17,7 +17,7 @@
         </form>
       </nav>
       <div class="header__logo">
-        <img src="img/logo-white.png" alt="Natours logo" />
+        <img src="/img/logo-white.png" alt="Natours logo" />
       </div>
       <nav class="nav nav--user">
         <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn"
@@ -65,7 +65,7 @@
     <router-view />
     <footer class="footer">
       <div class="footer__logo">
-        <img src="img/logo-green.png" alt="Natours logo" />
+        <img src="/img/logo-green.png" alt="Natours logo" />
       </div>
       <ul class="footer__nav">
         <li><a href="#">About us</a></li>
