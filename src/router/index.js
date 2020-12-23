@@ -5,6 +5,7 @@ import Login from '@/components/Login.vue';
 import Signup from '@/components/Signup.vue';
 import Tours from '@/components/Tours.vue';
 import Details from '@/components/Details.vue';
+import UserPage from '@/components/UserPage.vue';
 import PathNotFound from '@/components/PathNotFound.vue';
 
 Vue.use(VueRouter);
@@ -35,6 +36,11 @@ const routes = [
     name: 'Details',
     component: Details,
     props: true,
+  },
+  {
+    path: '/me',
+    name: 'UserPage',
+    component: UserPage,
   },
   { path: '*', component: PathNotFound },
 ];

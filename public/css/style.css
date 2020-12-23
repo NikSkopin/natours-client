@@ -774,9 +774,9 @@ body {
   display: flex;
 }
 .user-view__menu {
-  -webkit-box-flex: 32rem;
+  /* -webkit-box-flex: 32rem;
   -ms-flex: 32rem 0 0px;
-  flex: 32rem 0 0;
+  flex: 32rem 0 0; */
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -796,7 +796,7 @@ body {
 .user-view__form-container {
   max-width: 68rem;
   margin: 0 auto;
-  padding: 0 8rem;
+  /* padding: 0 8rem; */
 }
 
 .footer {
@@ -1340,4 +1340,25 @@ body {
 
 .p-message .p-message-text {
   font-size: 1.5rem;
+}
+
+.p-progress-spinner {
+  width: 5rem;
+}
+
+@keyframes p-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #62cb77;
+  }
+  40% {
+    stroke: #3cbc81;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%,
+  90% {
+    stroke: #3cbc81;
+  }
 }
