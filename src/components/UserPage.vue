@@ -67,6 +67,8 @@
                 accept="image/*"
                 id="photo"
                 name="photo"
+                ref="photo"
+                @change="addFile"
               /><label for="photo">Choose new photo</label>
             </div>
             <div class="form__group right">
@@ -153,6 +155,7 @@ export default {
       password: null,
       passwordConfirm: null,
       loading: false,
+      file: [],
     };
   },
 
@@ -160,15 +163,20 @@ export default {
     user: (state) => state.user,
   }),
   methods: {
+    addFile() {
+      [this.file] = this.$refs.photo.files;
+    },
     async changeName() {
       try {
         if (!this.newName) this.newName = this.user.name;
         if (!this.newEmail) this.newEmail = this.user.email;
 
-        const response = await AuthService.updateMe({
-          name: this.newName,
-          email: this.newEmail,
-        });
+        const form = new FormData();
+        form.append('name', this.newName);
+        form.append('email', this.newEmail);
+        form.append('photo', this.file);
+
+        const response = await AuthService.updateMe(form);
         // TODO add message 'Data updated successfully' if res.status == success
         this.$store.dispatch('setUser', response.data.data.user);
         this.newName = null;
