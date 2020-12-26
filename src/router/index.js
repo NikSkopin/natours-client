@@ -32,7 +32,7 @@ const routes = [
     component: Tours,
   },
   {
-    path: '/tours/:tourName',
+    path: '/tours/tour/:tourName',
     name: 'Details',
     component: Details,
     props: true,

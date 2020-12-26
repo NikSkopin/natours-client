@@ -69,13 +69,6 @@
             {{ 'rating (' + tour.ratingsQuantity + ')' }}</span
           >
         </p>
-        <!-- <a href="#" class="btn btn--green btn--small">Details</a> -->
-        <!-- <button
-          @click="$router.push('details')"
-          class="btn btn--green btn--small"
-        >
-          Details
-        </button> -->
         <router-link
           :to="{
             name: 'Details',
@@ -106,34 +99,39 @@ export default {
   },
   props: ['tour'],
   created() {
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    const today = new Date();
-    const startDate = this.tour.startDates.reduce((a, b) => {
-      const aDate = new Date(a);
-      const bDate = new Date(b);
-      const adiff = aDate - today;
-      return adiff > 0 && adiff < bDate - today ? aDate : bDate;
-    });
-    const month = monthNames[startDate.getMonth()];
-    const year = startDate.getFullYear();
-    this.dateString = `${month} ${year}`;
+    this.getName();
   },
   computed: {
     tourName() {
       return this.tour.name.replaceAll(' ', '-').toLowerCase();
+    },
+  },
+  methods: {
+    getName() {
+      const monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+      const today = new Date();
+      const startDate = this.tour.startDates.reduce((a, b) => {
+        const aDate = new Date(a);
+        const bDate = new Date(b);
+        const adiff = aDate - today;
+        return adiff > 0 && adiff < bDate - today ? aDate : bDate;
+      });
+      const month = monthNames[startDate.getMonth()];
+      const year = startDate.getFullYear();
+      this.dateString = `${month} ${year}`;
     },
   },
   components: {

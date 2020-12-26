@@ -7,4 +7,7 @@ export default {
   getTour(tourId) {
     return Api().get(`tours/${tourId}`);
   },
+  getTourSlug(slug) {
+    return Api().get(`tours/tour/${slug}`);
+  },
 };

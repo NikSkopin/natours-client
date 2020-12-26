@@ -191,22 +191,20 @@ export default {
 
   mounted() {
     this.getTour();
-    // TODO wait for response, then render
   },
   methods: {
     async getTour() {
       this.error = null;
+      this.slug = window.location.href.split('/').pop();
 
       try {
-        this.tour = (await TourService.getTour(this.tourId)).data.data.data;
-        console.log(this.tour.imageCover);
+        [this.tour] = (await TourService.getTourSlug(this.slug)).data.data.data;
         this.dataFetched = true;
       } catch (error) {
         this.error = error.response.data.error;
       }
     },
   },
-
   components: { Map, Review, Carousel },
 };
 </script>

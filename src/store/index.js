@@ -25,9 +25,9 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
-    updateUser(state, payload) {
-      state.user[payload.property] = payload.value;
-    },
+    // updateUser(state, payload) {
+    //   state.user[payload.property] = payload.value;
+    // },
   },
   actions: {
     setToken({ commit }, token) {
@@ -37,6 +37,7 @@ export default new Vuex.Store({
       commit('setUser', user);
     },
   },
+  getters: {},
   plugins: [
     createPersistedState({
       paths: ['user'],
