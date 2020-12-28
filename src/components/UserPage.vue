@@ -178,6 +178,7 @@ export default {
 
         const response = await AuthService.updateMe(form);
         // TODO add message 'Data updated successfully' if res.status == success
+        // and error if something went wrong
         this.$store.dispatch('setUser', response.data.data.user);
         this.newName = null;
         this.newEmail = null;

@@ -142,13 +142,21 @@
             {{ tour.duration }} days. 1 adventure. Infinite memories. Make it
             yours today!
           </p>
-          <!-- TODO doesn't work yet -->
           <button
             class="btn btn--green span-all-rows"
             id="book-tour"
-            data-tour-id="5c88fa8cf4afda39709c2955"
+            v-if="$store.state.isUserLoggedIn"
+            @click="checkout"
           >
             Book tour now!
+          </button>
+          <button
+            class="btn btn--green span-all-rows"
+            id="book-tour"
+            v-else
+            @click="$router.push({ name: 'Login' })"
+          >
+            Log in to book this tour
           </button>
         </div>
       </div>
@@ -161,6 +169,7 @@ import Map from '@/components/Map.vue';
 import Carousel from 'primevue/carousel';
 import Review from '@/components/Review.vue';
 import TourService from '@/services/TourService';
+import BookingService from '@/services/BookingService';
 
 export default {
   data() {
@@ -168,6 +177,10 @@ export default {
       dataFetched: false,
       error: null,
       tour: null,
+      publishableKey:
+        'pk_test_51I3IN8AghwMwoaPNgxGa52hIxFUgLxx5AdXUck5LY1EZT6gJVrnxtf1GDuIMQCkNZ26zZxrR7fkQJhyZq6jkSdYO002LqDuKkt',
+      sessionId: null,
+      stripe: null,
       responsiveOptions: [
         {
           breakpoint: '1024px',
@@ -190,6 +203,8 @@ export default {
   props: ['tourName', 'tourId', 'dateString'],
 
   mounted() {
+    this.configureStripe();
+
     this.getTour();
   },
   methods: {
@@ -204,8 +219,32 @@ export default {
         this.error = error.response.data.error;
       }
     },
+    // includeStripe(URL) {
+    //   const stripeJS = document.createElement('script');
+    //   stripeJS.setAttribute('src', URL);
+    //   document.head.appendChild(stripeJS);
+    // },
+    configureStripe() {
+      this.stripe = window.Stripe(this.publishableKey);
+    },
+    async checkout() {
+      try {
+        const session = await BookingService.booking(this.tour.id);
+        this.sessionId = session.data.session.id;
+
+        await this.stripe.redirectToCheckout({
+          sessionId: this.sessionId,
+        });
+      } catch (error) {
+        this.error = error;
+      }
+    },
   },
-  components: { Map, Review, Carousel },
+  components: {
+    Map,
+    Review,
+    Carousel,
+  },
 };
 </script>
 
