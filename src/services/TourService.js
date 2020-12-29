@@ -10,4 +10,7 @@ export default {
   getTourSlug(slug) {
     return Api().get(`tours/tour/${slug}`);
   },
+  getMyTours(user) {
+    return Api().get('tours/my-tours', user);
+  },
 };
