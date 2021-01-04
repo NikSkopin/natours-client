@@ -1,7 +1,8 @@
 <template>
   <!-- TODO add responsive -->
-  <div v-if="dataFetched">
-    <section class="section-header">
+  <div>
+    <Loader v-show="!dataFetched" />
+    <section v-if="dataFetched" class="section-header">
       <div class="header__hero">
         <div class="header__hero-overlay">&nbsp;</div>
         <img
@@ -170,6 +171,7 @@ import Carousel from 'primevue/carousel';
 import Review from '@/components/Review.vue';
 import TourService from '@/services/TourService';
 import BookingService from '@/services/BookingService';
+import Loader from '@/components/Loader.vue';
 
 export default {
   data() {
@@ -209,6 +211,8 @@ export default {
   },
   methods: {
     async getTour() {
+      this.dataFetched = false;
+
       this.error = null;
       this.slug = window.location.href.split('/').pop();
 
@@ -244,6 +248,7 @@ export default {
     Map,
     Review,
     Carousel,
+    Loader,
   },
 };
 </script>

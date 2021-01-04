@@ -2,7 +2,7 @@
   <main class="main">
     <div class="login-form">
       <h2 class="heading-secondary ma-bt-lg">Create your account!</h2>
-      <form class="form form--signup">
+      <form class="form form--signup" @submit.prevent="signup">
         <div class="form__group">
           <label class="form__label" for="name">Your name</label
           ><input
@@ -53,10 +53,11 @@
         <Message severity="error" :closable="false" v-if="error">{{
           error.message
         }}</Message>
+        <Message severity="success" :closable="false" v-if="success">
+          You were registered successfully!
+        </Message>
         <div class="form__group">
-          <button class="btn btn--green" type="button" v-on:click="signup">
-            Sign up
-          </button>
+          <button class="btn btn--green" type="submit">Sign up</button>
         </div>
       </form>
     </div>
@@ -75,6 +76,7 @@ export default {
       password: '',
       passwordConfirm: '',
       error: null,
+      success: false,
     };
   },
   methods: {
@@ -87,6 +89,9 @@ export default {
           password: this.password,
           passwordConfirm: this.passwordConfirm,
         });
+        if (response.status === 'success') {
+          this.success = true;
+        }
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.data.user);
         this.$router.push({

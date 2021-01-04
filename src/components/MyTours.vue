@@ -1,9 +1,18 @@
 <template>
-  <ul class="p-grid p-m-2 p-jc-center card-container">
-    <li v-for="booking in bookings" :key="booking._id">
-      <Tour :tour="booking" />
-    </li>
-  </ul>
+  <div class="main" v-if="dataFetched">
+    <ul
+      class="p-grid p-m-2 p-jc-center card-container"
+      v-if="bookings.length != 0"
+    >
+      <li v-for="booking in bookings" :key="booking._id">
+        <Tour :tour="booking" />
+      </li>
+    </ul>
+    <h2 v-else>
+      You don't have any bookings yet. Choose your first adventure
+      <router-link to="Home"> here </router-link>
+    </h2>
+  </div>
 </template>
 
 <script>
@@ -17,6 +26,7 @@ export default {
       user: null,
       userID: '',
       bookings: [],
+      dataFetched: false,
     };
   },
   async mounted() {
@@ -24,9 +34,8 @@ export default {
       // const { _id } = this.$store.state.user;
       // this.userID = _id;
       this.user = this.$store.state.user;
-      const res = await TourService.getMyTours(this.user);
-      this.bookings = res.data.data;
-      console.log(this.bookings.data.data);
+      this.bookings = (await TourService.getMyTours(this.user)).data.data;
+      this.dataFetched = true;
     } catch (error) {
       console.log(error);
     }

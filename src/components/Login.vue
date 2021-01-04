@@ -2,7 +2,7 @@
   <div class="main">
     <div class="login-form">
       <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
-      <form class="form form--login">
+      <form class="form form--login" @submit.prevent="login">
         <div class="form__group">
           <label class="form__label" for="email">Email address</label
           ><input
@@ -32,9 +32,7 @@
           error.message
         }}</Message>
         <div class="form__group">
-          <button class="btn btn--green" type="button" v-on:click="login">
-            Login
-          </button>
+          <button class="btn btn--green" type="submit">Login</button>
         </div>
       </form>
     </div>
