@@ -8,7 +8,8 @@ import 'primeflex/primeflex.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 
-import '../public/css/style.css';
+// import '../public/css/style.css';
+import '../public/scss/main.scss';
 
 Vue.config.productionTip = false;
 

@@ -53,6 +53,7 @@ export default {
     async getAllTours() {
       this.loaded = false;
       this.error = null;
+      this.tourFilter = null;
       try {
         this.toursList = (await TourService.index()).data.data;
         this.loaded = true;

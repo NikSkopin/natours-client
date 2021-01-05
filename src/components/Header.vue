@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <nav class="nav nav--tours">
+    <nav class="nav nav__tours">
       <router-link class="nav__el" to="/">all tours</router-link>
     </nav>
     <div class="header__logo">
       <img src="/img/logo-white.png" alt="Natours logo" />
     </div>
-    <nav class="nav nav--user">
+    <nav class="nav nav__user">
       <!-- <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn"
           >My bookings</a
         > -->
