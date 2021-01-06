@@ -8,13 +8,17 @@
         placeholder="Filter tours"
         class="filter-input p-inputtext-lg p-mr-2"
       />
-      <button class="btn btn--green btn--small" @click="getAllTours">
-        Reset
-      </button>
+      <button class="btn btn__small" @click="getAllTours">Reset</button>
     </div>
     <!-- <Button label="Reset" class="btn btn--green btn--small btn--inline" /> -->
     <ul class="p-grid p-m-2 p-jc-center card-container">
-      <li v-for="tour in toursList" :key="tour._id"><Tour :tour="tour" /></li>
+      <li
+        v-for="tour in toursList"
+        :key="tour._id"
+        class="p-col-12 p-md-6 p-lg-4 p-sm-12 p-m-1"
+      >
+        <Tour :tour="tour" />
+      </li>
     </ul>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-col-12 p-md-6 p-lg-4 p-sm-12 p-m-1 card">
+  <Card class="card">
     <!-- <template #header>
       <img alt="user header" src="demo/images/usercard.png" />
     </template> -->
@@ -79,7 +79,7 @@
             },
           }"
           tag="button"
-          class="btn btn--green btn--small"
+          class="btn btn__small"
           >Details
         </router-link>
       </div>
