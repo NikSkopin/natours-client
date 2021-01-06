@@ -15,8 +15,8 @@
         :key="star.id"
         :class="
           review.rating > index
-            ? 'reviews__star reviews__star--active'
-            : 'reviews__star reviews__star--inactive'
+            ? 'reviews__star reviews__star__active'
+            : 'reviews__star reviews__star__inactive'
         "
       >
         <use xlink:href="/img/icons.svg#icon-star"></use>

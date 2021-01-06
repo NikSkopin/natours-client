@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO add responsive -->
   <div>
     <Loader v-show="!dataFetched" />
     <section v-if="dataFetched" class="section-header">
@@ -88,20 +87,23 @@
         </div>
       </div>
       <div class="description-box">
-        <h2 class="heading-secondary ma-bt-lg">About {{ tour.name }} tour</h2>
+        <h2 class="heading-secondary p-mb-5 ma-bt-lg">
+          About {{ tour.name }} tour
+        </h2>
         <p class="description__text">
           {{ tour.description }}
         </p>
       </div>
     </section>
-    <section class="section-pictures p-d-flex p-flex-column p-flex-md-row">
+    <section class="section-pictures p-d-flex p-flex-md-row">
       <div
         class="picture-box"
         v-for="(pic, index) in tour.images"
         :key="pic.index"
+        @click="displayGallery = true"
       >
         <img
-          v-bind:class="'picture-box__img picture-box__img--' + (index + 1)"
+          v-bind:class="'picture-box__img picture-box__img__' + (index + 1)"
           :src="'/img/tours/' + pic"
           :alt="tour.name + 'Tour' + (index + 1)"
         />
@@ -125,18 +127,20 @@
 
     <section class="section-cta">
       <div class="cta">
-        <div class="cta__img cta__img--logo">
-          <img src="/img/logo-white.png" alt="Natours logo" />
+        <div class="cta__img-container">
+          <div class="cta__img cta__img__logo">
+            <img src="/img/logo-white.png" alt="Natours logo" />
+          </div>
+          <img
+            class="cta__img cta__img__1"
+            :src="'/img/tours/' + tour.imageCover.split('cover')[0] + '2.jpg'"
+            alt="Tour picture"
+          /><img
+            class="cta__img cta__img__2"
+            :src="'/img/tours/' + tour.imageCover.split('cover')[0] + '3.jpg'"
+            alt="Tour picture"
+          />
         </div>
-        <img
-          class="cta__img cta__img--1"
-          src="/img/tours/tour-2-2.jpg"
-          alt="Tour picture"
-        /><img
-          class="cta__img cta__img--2"
-          src="/img/tours/tour-2-3.jpg"
-          alt="Tour picture"
-        />
         <div class="cta__content">
           <h2 class="heading-secondary">What are you waiting for?</h2>
           <p class="cta__text">
@@ -144,7 +148,7 @@
             yours today!
           </p>
           <button
-            class="btn btn--green span-all-rows"
+            class="btn btn__green"
             id="book-tour"
             v-if="$store.state.isUserLoggedIn"
             @click="checkout"
@@ -152,7 +156,7 @@
             Book tour now!
           </button>
           <button
-            class="btn btn--green span-all-rows"
+            class="btn btn__green"
             id="book-tour"
             v-else
             @click="$router.push({ name: 'Login' })"
@@ -162,16 +166,44 @@
         </div>
       </div>
     </section>
+    <Galleria
+      :value="images"
+      :responsiveOptions="responsiveOptions"
+      :numVisible="7"
+      containerStyle="max-width: 850px"
+      :circular="true"
+      :fullScreen="true"
+      :showItemNavigators="true"
+      :showThumbnails="false"
+      :visible.sync="displayGallery"
+    >
+      <template #item="slotProps">
+        <img
+          :src="slotProps.item"
+          alt="Tour image"
+          style="width: 100%; display: block"
+        />
+      </template>
+      <template #thumbnail="slotProps">
+        <img
+          :src="slotProps.item.thumbnailImageSrc"
+          :alt="slotProps.item.alt"
+          style="display: block"
+        />
+      </template>
+    </Galleria>
   </div>
 </template>
 
 <script>
 import Map from '@/components/Map.vue';
-import Carousel from 'primevue/carousel';
 import Review from '@/components/Review.vue';
 import TourService from '@/services/TourService';
 import BookingService from '@/services/BookingService';
 import Loader from '@/components/Loader.vue';
+
+import Carousel from 'primevue/carousel';
+import Galleria from 'primevue/galleria';
 
 export default {
   data() {
@@ -183,6 +215,7 @@ export default {
         'pk_test_51I3IN8AghwMwoaPNgxGa52hIxFUgLxx5AdXUck5LY1EZT6gJVrnxtf1GDuIMQCkNZ26zZxrR7fkQJhyZq6jkSdYO002LqDuKkt',
       sessionId: null,
       stripe: null,
+      displayGallery: false,
       responsiveOptions: [
         {
           breakpoint: '1024px',
@@ -218,16 +251,12 @@ export default {
 
       try {
         [this.tour] = (await TourService.getTourSlug(this.slug)).data.data.data;
+        this.images = this.tour.images.map((img) => `/img/tours/${img}`);
         this.dataFetched = true;
       } catch (error) {
         this.error = error.response.data.error;
       }
     },
-    // includeStripe(URL) {
-    //   const stripeJS = document.createElement('script');
-    //   stripeJS.setAttribute('src', URL);
-    //   document.head.appendChild(stripeJS);
-    // },
     configureStripe() {
       this.stripe = window.Stripe(this.publishableKey);
     },
@@ -249,6 +278,7 @@ export default {
     Review,
     Carousel,
     Loader,
+    Galleria,
   },
 };
 </script>

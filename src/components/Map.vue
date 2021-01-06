@@ -47,6 +47,7 @@ export default {
         container: 'map',
         style: 'mapbox://styles/jonasschmedtmann/cjnxfn3zk7bj52rpegdltx58h', // stylesheet location
         scrollZoom: false,
+        interactive: false,
       });
 
       const bounds = new mapboxgl.LngLatBounds();
