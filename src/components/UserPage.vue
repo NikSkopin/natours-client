@@ -1,9 +1,27 @@
 <template>
   <main class="main">
+    <div
+      @click="menuOpened = !menuOpened"
+      v-bind:class="[
+        'menu_button',
+        menuOpened ? 'menu_button__close' : 'menu_button__open',
+      ]"
+    >
+      <div
+        :class="
+          menuOpened ? 'menu_button__arrow-left' : 'menu_button__arrow-right'
+        "
+      ></div>
+    </div>
     <div class="user-view">
-      <nav class="user-view__menu">
+      <nav
+        :class="[
+          'user-view__menu',
+          menuOpened ? 'user-view__menu-opened' : 'user-view__menu-closed',
+        ]"
+      >
         <ul class="side-nav">
-          <li class="side-nav--active">
+          <li class="side-nav__active">
             <a href="#"
               ><svg><use xlink:href="img/icons.svg#icon-settings"></use></svg
               >Settings</a
@@ -30,7 +48,12 @@
           </li>
         </ul>
       </nav>
-      <div class="user-view__content">
+      <div
+        :class="[
+          'user-view__content',
+          menuOpened ? 'user-view__content-closed' : '',
+        ]"
+      >
         <div class="user-view__form-container">
           <h2 class="heading-secondary ma-bt-md">Your account settings</h2>
           <form class="form form-user-data" @submit.prevent="changeName">
@@ -72,7 +95,7 @@
               /><label for="photo">Choose new photo</label>
             </div>
             <div class="form__group right">
-              <button class="btn btn--small btn--green" type="submit">
+              <button class="btn btn__small btn__green" type="submit">
                 Save settings
               </button>
             </div>
@@ -126,7 +149,7 @@
             <div class="form__group right">
               <button
                 type="submit"
-                class="btn btn--small btn--green btn--save-password"
+                class="btn btn__small btn__green btn__save-password"
                 v-show="!loading"
               >
                 Save password
@@ -156,6 +179,7 @@ export default {
       passwordConfirm: null,
       loading: false,
       file: [],
+      menuOpened: true,
     };
   },
 
