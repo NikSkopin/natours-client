@@ -21,6 +21,7 @@
 .heading {
   &-box {
     position: absolute;
+    width: 70%;
     bottom: 13vw;
     left: 50%;
     top: 35%;
@@ -30,8 +31,6 @@
       margin-top: 3rem;
       display: flex;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
       justify-content: center;
     }
     &__detail {

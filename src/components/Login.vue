@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="login-form">
-      <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
+      <h2 class="heading-secondary">Log into your account</h2>
       <form class="form form--login" @submit.prevent="login">
         <div class="form__group">
           <label class="form__label" for="email">Email address</label

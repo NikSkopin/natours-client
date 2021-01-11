@@ -7,13 +7,10 @@
       <img src="/img/logo-white.png" alt="Natours logo" />
     </div>
     <nav class="nav nav__user">
-      <!-- <a href="#" class="nav__el" v-if="$store.state.isUserLoggedIn"
-          >My bookings</a
-        > -->
       <router-link to="/me" class="nav__el" v-if="$store.state.isUserLoggedIn">
         <img
           v-if="user.photo"
-          v-bind:src="'img/users/' + user.photo"
+          v-bind:src="'/img/users/' + user.photo"
           alt="User photo"
           class="nav__user-img"
         />

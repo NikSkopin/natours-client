@@ -25,13 +25,18 @@ $primary-font: 'Lato', sans-serif;
 // }
 
 // //responsiveness
-// @mixin mediaMd {
-//   @media screen and (max-width: 768px) {
-//     @content;
-//   }
-// }
-// @mixin mediaSm {
-//   @media screen and (max-width: 600px) {
-//     @content;
-//   }
-// }
+@mixin mediaXLg {
+  @media screen and (min-width: 1080px) {
+    @content;
+  }
+}
+@mixin mediaLg {
+  @media screen and (min-width: 960px) {
+    @content;
+  }
+}
+@mixin mediaMd {
+  @media screen and (min-width: 640px) {
+    @content;
+  }
+}
