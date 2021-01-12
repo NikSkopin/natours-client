@@ -31,13 +31,11 @@ export default {
   },
   async mounted() {
     try {
-      // const { _id } = this.$store.state.user;
-      // this.userID = _id;
       this.user = this.$store.state.user;
       this.bookings = (await TourService.getMyTours(this.user)).data.data;
       this.dataFetched = true;
     } catch (error) {
-      console.log(error);
+      this.error = error.response.data;
     }
   },
   components: {
