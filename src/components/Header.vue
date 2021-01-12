@@ -3,9 +3,9 @@
     <nav class="nav nav__tours">
       <router-link class="nav__el" to="/">all tours</router-link>
     </nav>
-    <div class="header__logo">
+    <router-link to="/" class="header__logo">
       <img src="/img/logo-white.png" alt="Natours logo" />
-    </div>
+    </router-link>
     <nav class="nav nav__user">
       <router-link to="/me" class="nav__el" v-if="$store.state.isUserLoggedIn">
         <img

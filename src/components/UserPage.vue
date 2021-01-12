@@ -179,7 +179,7 @@ export default {
       passwordConfirm: null,
       loading: false,
       file: [],
-      menuOpened: true,
+      menuOpened: false,
     };
   },
 

@@ -1,8 +1,10 @@
 .main {
   background-color: $background-color;
-  padding: 8rem 6rem;
-  flex: 1;
+  padding: 0;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -38,10 +40,10 @@
   }
 
   &__white {
-    background-color: #fff;
+    background-color: $primary-color;
     color: $secondary-color;
     &::after {
-      background-color: #fff;
+      background-color: $primary-color;
     }
   }
   &__small {
@@ -52,7 +54,7 @@
 
 .heading-primary,
 .heading-tertirary {
-  color: #fff;
+  color: $primary-color;
   text-transform: uppercase;
   font-weight: 300;
 
@@ -136,7 +138,7 @@
   padding: 1.25rem 1.75rem;
   border: none;
   width: 100%;
-  background-color: #fff;
+  background-color: $primary-color;
   background-color: #f2f2f2;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
@@ -148,7 +150,7 @@
 
   &:focus {
     outline: none;
-    border-bottom: 3px solid #55c57a;
+    border-bottom: 3px solid $accent-color;
     &:invalid {
       border-bottom: 3px solid #ff7730;
     }

@@ -10,12 +10,11 @@
       />
       <button class="btn btn__small" @click="getAllTours">Reset</button>
     </div>
-    <!-- <Button label="Reset" class="btn btn--green btn--small btn--inline" /> -->
-    <ul class="p-grid p-m-2 p-jc-center card-container">
+    <ul class="p-grid p-jc-center card-container">
       <li
         v-for="tour in toursList"
         :key="tour._id"
-        class="p-col-12 p-md-6 p-lg-4 p-sm-12 p-m-1"
+        class="p-col-12 p-sm-12 p-md-6 p-lg-4 p-d-flex p-jc-center"
       >
         <Tour :tour="tour" />
       </li>

@@ -1,12 +1,9 @@
-.main {
-  padding: 0;
-}
-
 .user-view {
   background-color: $primary-color;
+  height: 100%;
 
   &__menu {
-    background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+    background-image: $gradient;
     padding: 10rem 2rem;
     position: fixed;
     top: 0;
@@ -29,9 +26,6 @@
     &-closed {
       display: none;
     }
-  }
-  &__form-container {
-    /* padding: 0 8rem; */
   }
 }
 .form {
@@ -66,14 +60,14 @@
     position: absolute;
     z-index: -1;
     &:focus + label {
-      outline: 3px solid #55c57a;
+      outline: 3px solid $accent-color;
       outline-offset: 3px;
     }
     & + label {
-      color: #55c57a;
+      color: $accent-color;
       display: inline-block;
       text-decoration: none;
-      border-bottom: 1px solid #55c57a;
+      border-bottom: 1px solid $accent-color;
       padding: 3px;
       -webkit-transition: all 0.2s;
       transition: all 0.2s;
@@ -85,19 +79,19 @@
 .side-nav {
   list-style: none;
   margin: 1rem 0;
-  border-left: 0 solid #fff;
+  border-left: 0 solid $primary-color;
   transition: all 0.3s;
   text-decoration: none;
-
   & svg {
     height: 1.9rem;
     width: 1.9rem;
-    fill: #f7f7f7;
+    min-width: 1.9rem;
+    fill: $background-color;
     margin-right: 2rem;
   }
 
   &__active {
-    border-left: 4px solid #fff;
+    border-left: 4px solid $primary-color;
     & a {
       transform: translateX(-3px);
     }
@@ -109,7 +103,7 @@
       padding: 1rem 4rem;
       display: flex;
       align-items: center;
-      color: #fff;
+      color: $primary-color;
       font-size: 1.5rem;
       text-transform: uppercase;
       font-weight: 400;

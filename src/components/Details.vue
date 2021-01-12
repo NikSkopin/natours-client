@@ -116,7 +116,7 @@
       :value="tour.reviews"
       :numVisible="3"
       :numScroll="3"
-      :circular="true"
+      :circular="false"
       :responsiveOptions="responsiveOptions"
       class="section-reviews"
     >
@@ -218,19 +218,19 @@ export default {
       displayGallery: false,
       responsiveOptions: [
         {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3,
+          breakpoint: '640px',
+          numVisible: 1,
+          numScroll: 1,
         },
         {
-          breakpoint: '600px',
+          breakpoint: '960px',
           numVisible: 2,
           numScroll: 2,
         },
         {
-          breakpoint: '480px',
-          numVisible: 1,
-          numScroll: 1,
+          breakpoint: '1080px',
+          numVisible: 3,
+          numScroll: 3,
         },
       ],
     };
