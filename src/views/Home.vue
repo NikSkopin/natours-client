@@ -1,7 +1,7 @@
 <template>
-  <div class="p-d-flex p-jc-center">
+  <main class="p-d-flex p-jc-center">
     <Tours />
-  </div>
+  </main>
 </template>
 
 <script>

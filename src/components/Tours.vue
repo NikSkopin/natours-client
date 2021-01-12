@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <Loader v-show="!loaded" />
     <div class="filter-input-container p-d-flex">
       <InputText
@@ -19,7 +19,7 @@
         <Tour :tour="tour" />
       </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script>
